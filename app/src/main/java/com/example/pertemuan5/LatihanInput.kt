@@ -42,7 +42,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
 
     var jenisK by remember { mutableStateOf("") }
     var dataJenisk by remember { mutableStateOf("")}
-    val dataJk by remember { mutableStateOf("")}
+    val dataJK = listOf("Laki- Laki", "Perempuan")
 
 
 
@@ -64,7 +64,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
             }
         )
         Row {
-            dataJk.forEach{selectedJK ->
+            dataJK.forEach{selectedJK ->
                 Row (verticalAlignment = Alignment.CenterVertically){
                     RadioButton(selected = jenisK == selectedJK,
                         onClick = {
@@ -77,7 +77,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
 
         TextField(
             value = email,
-            onValueChange = {nama = it},
+            onValueChange = {email = it},
             modifier = Modifier.fillMaxWidth().padding(5.dp),
             label = { Text("Email")
             },
@@ -88,7 +88,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
         )
         TextField(
             value = noHp,
-            onValueChange = {nama = it},
+            onValueChange = {noHp = it},
             modifier = Modifier.fillMaxWidth().padding(5.dp),
             label = { Text("Nomor HP")
             },
@@ -99,7 +99,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
         )
         TextField(
             value = alamat,
-            onValueChange = {nama = it},
+            onValueChange = {alamat = it},
             modifier = Modifier.fillMaxWidth().padding(5.dp),
             label = { Text("Alamat")
             },
@@ -108,7 +108,7 @@ fun LatihanInput(modifier: Modifier = Modifier){
             }
         )
         Button(onClick = {dataNama = nama
-                          dataJenisk = jenisK
+                         dataJenisk = jenisK
                          dataEmail = email
                          datanoHp = noHp
                          dataAlamat = alamat} , modifier = Modifier.padding(vertical = 10.dp)) {
@@ -120,6 +120,10 @@ fun LatihanInput(modifier: Modifier = Modifier){
                 TampilData(
                     judul = "Nama",
                     isinya = dataNama
+                )
+                TampilData(
+                    judul = "Jenis Kelamin",
+                    isinya = jenisK
                 )
                 TampilData(
                     judul = "Email",
